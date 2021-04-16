@@ -10,16 +10,13 @@ public class Game {
     private int isWon;
     public int currentTurn;
 
-    @Override
-    public String toString() {
-        return "The game has begun: " +
-                " maximum right value of token: " + n +
-                ", number of players: " + k +
-                ", with the following players: " + players +
-                ", on the following board:\n " + board +
-                '.';
-    }
-
+    /**
+     * constructor
+     * @param n
+     * @param k
+     * @param players
+     * @param board
+     */
     public Game(int n, int k, LinkedList<Player> players, Board board) {
         this.n = n;
         this.k = k;
@@ -29,6 +26,18 @@ public class Game {
         this.currentTurn=0;
     }
 
+    @Override
+    public String toString() {
+        return "The game has begun: " +
+                " maximum right value of token: " + n +
+                ", number of players: " + k +
+                ", with the following players: " + players +
+                ", on the following board:\n " + board +
+                '.';
+    }
+    /**
+     * the game starts with a thread for each player
+     */
     public void start() {
         for (int index = 0; index < players.size(); index++) {
             players.get(index).setTurn(index);
@@ -37,6 +46,9 @@ public class Game {
 
     }
 
+    /**
+     * this method displays the winner: the player with the highest score
+     */
     public void getWinner()
     {
         if(this.isWon!=0) return;

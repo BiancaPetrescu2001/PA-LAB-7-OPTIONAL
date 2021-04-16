@@ -1,16 +1,7 @@
 package optional;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.SneakyThrows;
-
 import java.util.ArrayList;
 import java.util.List;
-
-@Getter
-@Setter
-@EqualsAndHashCode
 
 public class Player implements Runnable {
 
@@ -26,7 +17,6 @@ public class Player implements Runnable {
      * @param board
      * @param playerType
      */
-
     public Player(String name, Board board, String playerType) {
         this.name = name;
         this.board = board;
@@ -37,7 +27,7 @@ public class Player implements Runnable {
      * this method allows players to extract tokens as long as they exist
      * if the player is human then extractTokenHuman() is called, else extractToken is called
      */
-    @SneakyThrows
+
     @Override
     public void run() {
 
@@ -54,12 +44,15 @@ public class Player implements Runnable {
             }
         }
         board.getGame().getWinner();
+
+
     }
 
     /**
      * this method calculate the score of the player
      * @return
      */
+
     public int getScore()
     {
         int score=0;
@@ -74,5 +67,18 @@ public class Player implements Runnable {
                 name + '\'';
     }
 
+    /**
+     *getters and setters
+     */
+    public String getName() {
+        return name;
+    }
 
+    public List<Token> getMyTokens() {
+        return myTokens;
+    }
+
+    public void setTurn(int turn) {
+        this.myTurn = turn;
+    }
 }

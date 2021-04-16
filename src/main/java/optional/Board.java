@@ -12,16 +12,12 @@ public class Board {
     private LinkedList<Token> tokens = new LinkedList<>();
     private int maxInt;
     private Game game;
-    public synchronized boolean isEmpty() {
-        return tokens.isEmpty();
-    }
     private LinkedList<Player> players;
 
-
-    public void setPlayers(LinkedList<Player> players) {
-        this.players = players;
-    }
-
+    /**
+     * constructor
+     * @param n
+     */
     public Board(int n) {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
@@ -32,25 +28,23 @@ public class Board {
         this.maxInt = n;
     }
 
-
-    public int getNumber() {
-        return maxInt;
+    /**
+     * This method checks if there are any tokens that can be chosen
+     * @return
+     */
+    public synchronized boolean isEmpty() {
+        return tokens.isEmpty();
     }
 
-    public Game getGame() {
-        return game;
-    }
 
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    @Override
-    public String toString() {
-        return "(new board here){" +
-                tokens + "}";
-    }
-
+    /**
+     * this method extract tokens in bot player case
+     * the bot extract a random token
+     * the bot waits for the others players to finish and notifies (notifyAll) after it has chosen
+     *
+     * @param turn
+     * @return
+     */
     public synchronized Token extractToken(int turn) {
         try {
             wait(100);
@@ -82,6 +76,14 @@ public class Board {
         System.exit(0);
         return null;
     }
+
+    /**
+     * this method extract tokens in human player case
+     * the player used the keyboard
+     * the bot waits for the others players to finish and notifies (notifyAll) after it has chosen
+     * @param turn
+     * @return
+     */
     public synchronized Token extractTokenHuman(int turn) {
         try {
             //Thread.sleep(100);
@@ -122,11 +124,29 @@ public class Board {
         return null;
     }
 
-    public synchronized void win(List<Token> theseTokens, int turn){
 
-        notifyAll();
-        System.out.println("Player " + (turn+1) + " with the following tokens = " + theseTokens + " has won the game!");
-        empty=true;
-        System.exit(0);
+    @Override
+    public String toString() {
+        return "(new board here){" +
+                tokens + "}";
     }
+
+    /**
+     * getters and setters
+     */
+    public void setPlayers(LinkedList<Player> players) {
+        this.players = players;
+    }
+    public int getNumber() {
+        return maxInt;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
 }
