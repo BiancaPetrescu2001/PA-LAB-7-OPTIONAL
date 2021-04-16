@@ -21,18 +21,19 @@ Pay attention to the synchronization of the threads when extracting tokens from 
 ```
 OPTIONAL
 ```text
-Implement the scoring and determine who the winner is at the end of the game.
-Make sure that players wait their turns, using a wait-notify approach.
-Consider the situation when each player might have a different strategy for extracting a number: automated (random) or manual.
-A manual player will use the keyboard, while the bot will extract a random token. Simulate bot contests on large graphs.
-Implement a timekeeper thread that runs concurrently with the player threads, as a daemon. This thread will display the running time of the game and it will stop the game if it exceeds a certain time limit.
+(done)Implement the scoring and determine who the winner is at the end of the game.
+(done)Make sure that players wait their turns, using a wait-notify approach.
+(done)Consider the situation when each player might have a different strategy for extracting a number: automated (random) or manual.
+(done)A manual player will use the keyboard, while the bot will extract a random token. Simulate bot contests on large graphs.
+(not done)Implement a timekeeper thread that runs concurrently with the player threads, as a daemon. This thread will display the running time of the game and it will stop the game if it exceeds a certain time limit.
 ```
 
-## Solved tasks
+## Team
 
-As of today (21.03.2021), I have solved all tasks regarding the compulsory task.
+Avasiloae Alexandra
+Petrescu Bianca
 
-On 16th of April I have solved the first 2 tasks in the optional part, and I have also tried to do the free drawing task. However, because of the lack of time (and skill) I have skipped the last task after several unsuccessful  attempts.
+
 ## Build and run
 
 To compile and run my project I have typed the following commands in the terminal:
