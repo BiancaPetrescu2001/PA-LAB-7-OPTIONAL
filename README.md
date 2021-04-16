@@ -30,7 +30,7 @@ OPTIONAL
 
 ## Team
 
-Avasiloae Alexandra
+Avasiloae Alexandra and 
 Petrescu Bianca
 
 
